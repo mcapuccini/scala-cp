@@ -26,7 +26,14 @@ object ICPTest {
   }
 
   def randomSplitAt(data: Seq[DataPoint], n: Int) = {
-    Random.shuffle(data).splitAt(n)
+    // Balanced split
+    val (dataLeft0,dataRight0) = Random.shuffle(data.filter(_.label == 0.0)).splitAt(n/4)
+    val (dataLeft1,dataRight1) = Random.shuffle(data.filter(_.label == 1.0)).splitAt(n/4)
+    val (dataLeft2,dataRight2) = Random.shuffle(data.filter(_.label == 2.0)).splitAt(n/4)
+    val (dataLeft3,dataRight3) = Random.shuffle(data.filter(_.label == 3.0)).splitAt(n/4)
+    val dataLeft = Random.shuffle(dataLeft0++dataLeft1++dataLeft2++dataLeft3)
+    val dataRight = Random.shuffle(dataRight0++dataRight1++dataRight2++dataRight3)
+    (dataLeft,dataRight)
   }
 
   def getFiveNnAlg(training: Seq[DataPoint]) = {
@@ -67,7 +74,7 @@ class ICPTest extends FunSuite {
   test("ICP classification: error should be lower than significance on average") {
 
     // Set a significance level
-    val significance = 0.2
+    val significance = 0.35
     //Generate some sample data
     val sampleData = ICPTest.generateFourClassesData(100)
 
@@ -75,7 +82,7 @@ class ICPTest extends FunSuite {
     val errFracts = (0 to 100).map { _ =>
       // Split proper training, calibration and test
       val (training, test) = ICPTest.randomSplitAt(sampleData, 80)
-      val (properTraining, calibration) = ICPTest.randomSplitAt(training, 70)
+      val (properTraining, calibration) = ICPTest.randomSplitAt(training, 60)
       // Train ICP
       val alg = ICPTest.getFiveNnAlg(properTraining)
       val model = ICP.trainClassifier(alg, nOfClasses = 4, calibration)
