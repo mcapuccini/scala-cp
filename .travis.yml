@@ -4,4 +4,7 @@ before_install:
   - cd cp
 
 after_success:
-  - mvn deploy --settings travis-config.xml -DskipTests=true -B
+  - >
+    if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then
+      mvn deploy --settings travis-config.xml -DskipTests=true -B
+    fi
