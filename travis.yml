@@ -1,0 +1,7 @@
+language: java
+
+before_install:
+  - cd cp
+
+after_success:
+  - mvn deploy --settings travis-config.xml -DskipTests=true -B
