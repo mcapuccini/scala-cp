@@ -3,6 +3,9 @@ language: java
 before_install:
   - cd cp
 
+before_script:
+  - mvn scala:doc -B # generate/test documentation
+
 after_success:
   - >
     if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then
