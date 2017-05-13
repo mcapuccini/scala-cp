@@ -7,6 +7,8 @@ import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
 
+case class DataPoint(features: Seq[Double], label: Double)
+
 object ICPTest {
 
   def generateFourClassesData(numSamples: Int) = {
@@ -27,18 +29,30 @@ object ICPTest {
 
   def randomSplitAt(data: Seq[DataPoint], n: Int) = {
     // Balanced split
-    val (dataLeft0,dataRight0) = Random.shuffle(data.filter(_.label == 0.0)).splitAt(n/4)
-    val (dataLeft1,dataRight1) = Random.shuffle(data.filter(_.label == 1.0)).splitAt(n/4)
-    val (dataLeft2,dataRight2) = Random.shuffle(data.filter(_.label == 2.0)).splitAt(n/4)
-    val (dataLeft3,dataRight3) = Random.shuffle(data.filter(_.label == 3.0)).splitAt(n/4)
-    val dataLeft = Random.shuffle(dataLeft0++dataLeft1++dataLeft2++dataLeft3)
-    val dataRight = Random.shuffle(dataRight0++dataRight1++dataRight2++dataRight3)
-    (dataLeft,dataRight)
+    val (dataLeft0, dataRight0) = Random.shuffle(data.filter(_.label == 0.0)).splitAt(n / 4)
+    val (dataLeft1, dataRight1) = Random.shuffle(data.filter(_.label == 1.0)).splitAt(n / 4)
+    val (dataLeft2, dataRight2) = Random.shuffle(data.filter(_.label == 2.0)).splitAt(n / 4)
+    val (dataLeft3, dataRight3) = Random.shuffle(data.filter(_.label == 3.0)).splitAt(n / 4)
+    val dataLeft = Random.shuffle(dataLeft0 ++ dataLeft1 ++ dataLeft2 ++ dataLeft3)
+    val dataRight = Random.shuffle(dataRight0 ++ dataRight1 ++ dataRight2 ++ dataRight3)
+    (dataLeft, dataRight)
   }
 
-  def getFiveNnAlg(training: Seq[DataPoint]) = {
-    val oneNnPred = (features: Seq[Double]) => {
-      val trainByDistance = training.sortBy { point =>
+}
+
+@RunWith(classOf[JUnitRunner])
+class ICPTest extends FunSuite {
+
+  BasicConfigurator.configure // configure log4j
+
+  // Define 5NN underlying algorithm
+  class FiveNN(val properTrainingSet: Seq[DataPoint])
+      extends UnderlyingAlgorithm(properTrainingSet) {
+    def makeDataPoint(features: Seq[Double], label: Double) = DataPoint(features, label)
+    def getDataPointFeatures(dataPoint: DataPoint) = dataPoint.features
+    def getDataPointLabel(dataPoint: DataPoint) = dataPoint.label
+    def trainingProcedure(trainingSet: Seq[DataPoint]) = (features: Seq[Double]) => {
+      val trainByDistance = trainingSet.sortBy { point =>
         val squaredDist = point.features.zip(features).map {
           case (q, p) => math.pow(q - p, 2)
         }.reduce(_ + _)
@@ -49,27 +63,18 @@ object ICPTest {
         .maxBy(_._2.size)
         ._1
     }
-    new UnderlyingAlgorithm(oneNnPred) {
-      def nonConformityMeasure(newSample: DataPoint) = {
-        // Fraction of different closest neighbours
-        val trainByDistance = training.sortBy { point =>
-          val squaredDist = point.features.zip(newSample.features).map {
-            case (q, p) => math.pow(q - p, 2)
-          }.reduce(_ + _)
-          math.sqrt(squaredDist)
-        }
-        val nOfUnconformal = trainByDistance.take(5).count(_.label != newSample.label)
-        nOfUnconformal.toDouble / 5
+    def nonConformityMeasure(newSample: DataPoint) = {
+      // Fraction of different closest neighbours
+      val trainByDistance = properTrainingSet.sortBy { point =>
+        val squaredDist = point.features.zip(newSample.features).map {
+          case (q, p) => math.pow(q - p, 2)
+        }.reduce(_ + _)
+        math.sqrt(squaredDist)
       }
+      val nOfUnconformal = trainByDistance.take(5).count(_.label != newSample.label)
+      nOfUnconformal.toDouble / 5
     }
   }
-
-}
-
-@RunWith(classOf[JUnitRunner])
-class ICPTest extends FunSuite {
-  
-  BasicConfigurator.configure // configure log4j
 
   test("ICP classification: error should be lower than significance on average") {
 
@@ -84,7 +89,7 @@ class ICPTest extends FunSuite {
       val (training, test) = ICPTest.randomSplitAt(sampleData, 80)
       val (properTraining, calibration) = ICPTest.randomSplitAt(training, 60)
       // Train ICP
-      val alg = ICPTest.getFiveNnAlg(properTraining)
+      val alg = new FiveNN(properTraining)
       val model = ICP.trainClassifier(alg, nOfClasses = 4, calibration)
       //compute and return error fraction
       val errors = test.count { p =>
