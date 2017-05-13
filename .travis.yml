@@ -7,4 +7,5 @@ after_success:
   - >
     if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then
       mvn deploy --settings travis-config.xml -DskipTests=true -B
+      mvn site --settings github-config.xml -B
     fi
