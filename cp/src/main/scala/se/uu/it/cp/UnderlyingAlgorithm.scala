@@ -21,7 +21,7 @@ abstract class UnderlyingAlgorithm(
     val predictor: (Seq[Double] => Double)) extends Serializable {
   
   /**
-   * Defines a nonconformity method that given an unseen sample return a nonconformity score.
+   * Defines a nonconformity measure that given an unseen sample returns a nonconformity score.
    *
    *  @param newSample an unseen sample
    *  @return nonconformity score for newSample
