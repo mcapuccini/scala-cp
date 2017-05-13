@@ -1,0 +1,1 @@
+Index.PACKAGES = {"se" : [], "se.uu" : [], "se.uu.it" : [], "se.uu.it.cp" : [{"object" : "se\/uu\/it\/cp\/ICP$.html", "name" : "se.uu.it.cp.ICP"}, {"class" : "se\/uu\/it\/cp\/InductiveClassifier.html", "name" : "se.uu.it.cp.InductiveClassifier"}, {"class" : "se\/uu\/it\/cp\/UnderlyingAlgorithm.html", "name" : "se.uu.it.cp.UnderlyingAlgorithm"}]};
