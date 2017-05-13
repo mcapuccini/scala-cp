@@ -22,7 +22,7 @@
 		<scala.version>2.11.5</scala.version>
 		<scala.compat.version>2.11</scala.compat.version>
 	</properties>
-	
+
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
@@ -35,42 +35,35 @@
 	</distributionManagement>
 
 	<dependencies>
-	
 		<dependency>
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-library</artifactId>
 			<version>${scala.version}</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-
 		<!-- Test -->
-		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.specs2</groupId>
 			<artifactId>specs2-core_${scala.compat.version}</artifactId>
 			<version>2.4.16</version>
 			<scope>test</scope>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.scalatest</groupId>
 			<artifactId>scalatest_${scala.compat.version}</artifactId>
 			<version>2.2.4</version>
 			<scope>test</scope>
 		</dependency>
-		
 	</dependencies>
 
 	<build>
@@ -104,8 +97,6 @@
 				<configuration>
 					<useFile>false</useFile>
 					<disableXmlReport>true</disableXmlReport>
-					<!-- If you have classpath issue like NoDefClassError,... -->
-					<!-- useManifestOnlyJar>false</useManifestOnlyJar -->
 					<includes>
 						<include>**/*Test.*</include>
 						<include>**/*Suite.*</include>
@@ -113,5 +104,36 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!-- Eclipse m2e lifecycle-mapping -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>net.alchim31.maven</groupId>
+										<artifactId>scala-maven-plugin</artifactId>
+										<versionRange>[3.2.0,)</versionRange>
+										<goals>
+											<goal>compile</goal>
+											<goal>testCompile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
+
 </project>
