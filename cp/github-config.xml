@@ -1,0 +1,9 @@
+<settings>
+	<servers>
+		<server>
+			<id>github</id>
+			<username>mcapuccini</username>
+			<password>${env.GITHUB_PASSWORD}</password>
+		</server>
+	</servers>
+</settings>
