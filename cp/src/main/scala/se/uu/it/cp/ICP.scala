@@ -6,8 +6,8 @@ object ICP {
    * Trains an inductive conformal classifier using the mondrian approach.
    *
    *  @param algorithm an underlying algorithm to be used
-   *  @nOfClasses number of classes
-   *  @calibrationSet calibration set which is unseen to the underlying algorithm
+   *  @param nOfClasses number of classes
+   *  @param calibrationSet calibration set which is unseen to the underlying algorithm
    *  	training procedure
    *  @return inductive conformal classifier
    */
