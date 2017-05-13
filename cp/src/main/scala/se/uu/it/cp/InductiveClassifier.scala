@@ -10,7 +10,7 @@ import org.apache.log4j.Logger
  *  @param alphas nonconformity scores computed from a calibration set
  *  	(which is unseen to the underlying algorithm)
  */
-class InductiveClassifier[A <: UnderlyingAlgorithm](
+class InductiveClassifier[A <: UnderlyingAlgorithm[DataPoint], DataPoint<: Any](
     val alg: A,
     val alphas: Seq[Seq[Double]]) extends Serializable {
 
@@ -28,7 +28,7 @@ class InductiveClassifier[A <: UnderlyingAlgorithm](
     //Compute mondrian p-values
     (0 to alphas.length - 1).map { i =>
       //compute non-conformity for new example
-      val alphaN = alg.nonConformityMeasure(DataPoint(features, i))
+      val alphaN = alg.nonConformityMeasure(alg.makeDataPoint(features, i))
       //compute p-value
       (alphas(i).count(_ >= alphaN) + 1).toDouble /
         (alphas(i).length.toDouble + 1)
