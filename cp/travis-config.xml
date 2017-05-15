@@ -7,16 +7,4 @@
       <password>${env.SONATYPE_PASSWORD}</password>
     </server>
   </servers>
-  <profiles>
-    <profile>
-      <id>ossrh</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <properties>
-        <gpg.executable>gpg2</gpg.executable>
-        <gpg.passphrase>${env.SONATYPE_PASSWORD}</gpg.passphrase>
-      </properties>
-    </profile>
-  </profiles>
 </settings>
