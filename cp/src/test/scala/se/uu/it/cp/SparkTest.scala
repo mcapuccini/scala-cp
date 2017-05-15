@@ -4,7 +4,7 @@ import org.scalatest.FunSuite
 import org.apache.spark.mllib.util.MLUtils
 import org.apache.spark.mllib.regression.LabeledPoint
 import org.apache.spark.rdd.RDD
-import org.apache.spark.mllib.linalg.Vectors
+import org.apache.spark.mllib.linalg.{Vectors,Vector}
 import org.apache.spark.mllib.classification.SVMWithSGD
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
@@ -12,23 +12,29 @@ import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext
 
 // Define a MLlib SVM underlying algorithm
-class SVM(trainingSet: RDD[LabeledPoint])
-    extends UnderlyingAlgorithm[RDD[LabeledPoint], LabeledPoint](trainingSet) {
+class MLlibSVM(val properTrainingSet: RDD[LabeledPoint]) extends UnderlyingAlgorithm[LabeledPoint] {
+  
+  // First describe how to access Spark's LabeledPoint structure 
   override def makeDataPoint(features: Seq[Double], label: Double) =
     new LabeledPoint(label, Vectors.dense(features.toArray))
   override def getDataPointFeatures(lp: LabeledPoint) = lp.features.toArray
   override def getDataPointLabel(lp: LabeledPoint) = lp.label
-  override def trainingProcedure(trainingSet: RDD[LabeledPoint]) = {
+  
+  // Train a SVM model and define a lambda function that given a feature vector
+  // it returns its distance from the dividing hyperplane
+  val getHyperplaneDistance = (features: Vector) => {
     // Train with SVMWithSGD
-    val svmModel = SVMWithSGD.train(trainingSet, numIterations = 100)
+    val svmModel = SVMWithSGD.train(properTrainingSet, numIterations = 100)
     svmModel.clearThreshold // set to return distance from hyperplane
-    (features: Seq[Double]) => svmModel.predict(Vectors.dense(features.toArray))
+    svmModel.predict(features)
   }
+  
+  // Define nonconformity measure as signed distance from the dividing hyperplane
   override def nonConformityMeasure(lp: LabeledPoint) = {
     if (lp.label == 1.0) {
-      -predictor(lp.features.toArray)
+      -getHyperplaneDistance(lp.features)
     } else {
-      predictor(lp.features.toArray)
+      getHyperplaneDistance(lp.features)
     }
   }
 }
@@ -36,7 +42,7 @@ class SVM(trainingSet: RDD[LabeledPoint])
 @RunWith(classOf[JUnitRunner])
 class SparkTest extends FunSuite {
 
-  test("Train an inductive classifier with Apache Spark") {
+  test("Train an inductive classifier with Apache Spark SVM") {
 
     // Start SparkContext
     val conf = new SparkConf().setMaster("local[*]").setAppName("test")
@@ -53,8 +59,8 @@ class SparkTest extends FunSuite {
       training.randomSplit(Array(0.7, 0.3), seed = 11L)
 
     // Train an inductive conformal classifier
-    val cp = ICP.trainClassifier[SVM, RDD[LabeledPoint], LabeledPoint](
-      new SVM(properTraining.cache()), nOfClasses = 2, calibrationSet.collect)
+    val cp = ICP.trainClassifier(
+      new MLlibSVM(properTraining.cache()), nOfClasses = 2, calibrationSet.collect)
 
     // Make some predictions, and compute error fraction
     val significance = 0.05

@@ -12,12 +12,11 @@ object ICP {
    *  @return inductive conformal classifier
    */
   def trainClassifier[
-      A <: UnderlyingAlgorithm[Data, DataPoint], 
-      Data <: Any, 
+      A <: UnderlyingAlgorithm[DataPoint],
       DataPoint <: Any](
     algorithm: A,
     nOfClasses: Int,
-    calibrationSet: Seq[DataPoint]): InductiveClassifier[A, Data, DataPoint] = {
+    calibrationSet: Seq[DataPoint]): InductiveClassifier[A, DataPoint] = {
     //Compute alphas for each class (mondrian approach)
     val alphas = (0 to nOfClasses - 1).map { i =>
       calibrationSet.filter(algorithm.getDataPointLabel(_) == i) //filter current label

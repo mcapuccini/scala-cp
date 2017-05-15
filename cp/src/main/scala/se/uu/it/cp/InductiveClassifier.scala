@@ -11,8 +11,7 @@ import org.apache.log4j.Logger
  *  	(which is unseen to the underlying algorithm)
  */
 class InductiveClassifier[
-      A <: UnderlyingAlgorithm[Data, DataPoint], 
-      Data <: Any, 
+      A <: UnderlyingAlgorithm[DataPoint],
       DataPoint <: Any](
     val alg: A,
     val alphas: Seq[Seq[Double]]) extends Serializable {
