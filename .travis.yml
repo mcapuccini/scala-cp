@@ -3,6 +3,7 @@ language: java
 before_install:
   # Create temporary keypair
   - ssh-keygen -b 2048 -t rsa -f /tmp/sshkey -q -N ""
+  - eval "$(ssh-agent -s)"
   - ssh-add /tmp/sshkey
   # Enter the maven project folder
   - cd cp
