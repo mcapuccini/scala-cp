@@ -90,8 +90,8 @@
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="se.uu.it.cp.UnderlyingAlgorithm#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(properTrainingSet:Seq[DataPoint]):se.uu.it.cp.UnderlyingAlgorithm[DataPoint]"></a>
+              <ol><li name="se.uu.it.cp.UnderlyingAlgorithm#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;():se.uu.it.cp.UnderlyingAlgorithm[DataPoint]"></a>
       <a id="&lt;init&gt;:UnderlyingAlgorithm[DataPoint]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -99,15 +99,14 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">UnderlyingAlgorithm</span><span class="params">(<span name="properTrainingSet">properTrainingSet: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="se.uu.it.cp.UnderlyingAlgorithm.DataPoint">DataPoint</span>]</span>)</span>
+        <span class="name">UnderlyingAlgorithm</span><span class="params">()</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#se.uu.it.cp.UnderlyingAlgorithm@&lt;init&gt;(properTrainingSet:Seq[DataPoint]):se.uu.it.cp.UnderlyingAlgorithm[DataPoint]" title="Permalink" target="_top">
+      <a href="../../../../index.html#se.uu.it.cp.UnderlyingAlgorithm@&lt;init&gt;():se.uu.it.cp.UnderlyingAlgorithm[DataPoint]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">it trains a new underlying algorithm</p><div class="fullcomment"><div class="comment cmt"><p>it trains a new underlying algorithm</p></div><dl class="paramcmts block"><dt class="param">properTrainingSet</dt><dd class="cmt"><p>a training set that should be independent from the calibration set
-</p></dd></dl></div>
+      <p class="shortcomment cmt">it trains a new underlying algorithm</p>
     </li></ol>
             </div>
 
@@ -191,27 +190,6 @@
       <p class="shortcomment cmt">Given an unseen sample it returns a nonconformity score.</p><div class="fullcomment"><div class="comment cmt"><p>Given an unseen sample it returns a nonconformity score.
 </p></div><dl class="paramcmts block"><dt class="param">newSample</dt><dd class="cmt"><p>an unseen sample</p></dd><dt>returns</dt><dd class="cmt"><p>nonconformity score for newSample
 </p></dd></dl></div>
-    </li><li name="se.uu.it.cp.UnderlyingAlgorithm#trainingProcedure" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="trainingProcedure(trainingSet:Seq[DataPoint]):Seq[Double]=&gt;Double"></a>
-      <a id="trainingProcedure(Seq[DataPoint]):(Seq[Double])⇒Double"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">trainingProcedure</span><span class="params">(<span name="trainingSet">trainingSet: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="se.uu.it.cp.UnderlyingAlgorithm.DataPoint">DataPoint</span>]</span>)</span><span class="result">: (<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Double">Double</span>]) ⇒ <span class="extype" name="scala.Double">Double</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#se.uu.it.cp.UnderlyingAlgorithm@trainingProcedure(trainingSet:Seq[DataPoint]):Seq[Double]=&gt;Double" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Given a sequence of data points it returns a predictor as a lambda function
-of type (DataPoint) =&gt; Double.</p><div class="fullcomment"><div class="comment cmt"><p>Given a sequence of data points it returns a predictor as a lambda function
-of type (DataPoint) =&gt; Double.
-</p></div><dl class="paramcmts block"><dt class="param">trainingSet</dt><dd class="cmt"><p>training set used to train a predictor</p></dd><dt>returns</dt><dd class="cmt"><p>predictor as a lambda function of type (Seq[Double]) =&gt; Double
-</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li></ol>
             </div>
 
@@ -467,42 +445,6 @@ of type (DataPoint) =&gt; Double.
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="se.uu.it.cp.UnderlyingAlgorithm#predictor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="predictor:Seq[Double]=&gt;Double"></a>
-      <a id="predictor:(Seq[Double])⇒Double"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">predictor</span><span class="result">: (<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Double">Double</span>]) ⇒ <span class="extype" name="scala.Double">Double</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#se.uu.it.cp.UnderlyingAlgorithm@predictor:Seq[Double]=&gt;Double" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">A predictor that is trained using trainingProcedure when
-an UnderlyingAlgorithm is instantiated.</p>
-    </li><li name="se.uu.it.cp.UnderlyingAlgorithm#properTrainingSet" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="properTrainingSet:Seq[DataPoint]"></a>
-      <a id="properTrainingSet:Seq[DataPoint]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">properTrainingSet</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="se.uu.it.cp.UnderlyingAlgorithm.DataPoint">DataPoint</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#se.uu.it.cp.UnderlyingAlgorithm@properTrainingSet:Seq[DataPoint]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">a training set that should be independent from the calibration set
-</p>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
