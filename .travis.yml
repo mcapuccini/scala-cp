@@ -1,8 +1,10 @@
 language: java
 
 before_install:
-  # Create gpg key
+  # Create and send gpg key
   - gpg --batch --gen-key .travis-gpg.conf
+  - gpg --list-secret-keys
+  - gpg --send-key marco.capuccini@it.uu.se
   # Enter the maven project folder
   - cd cp
 
