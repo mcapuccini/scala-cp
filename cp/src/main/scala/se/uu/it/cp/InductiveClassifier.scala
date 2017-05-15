@@ -10,7 +10,9 @@ import org.apache.log4j.Logger
  *  @param alphas nonconformity scores computed from a calibration set
  *  	(which is unseen to the underlying algorithm)
  */
-class InductiveClassifier[A <: UnderlyingAlgorithm[DataPoint], DataPoint<: Any](
+class InductiveClassifier[
+      A <: UnderlyingAlgorithm[DataPoint],
+      DataPoint <: Any](
     val alg: A,
     val alphas: Seq[Seq[Double]]) extends Serializable {
 
