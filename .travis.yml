@@ -1,9 +1,8 @@
 language: java
 
 before_install:
-  # Create temporary keypair
-  - mkdir -p ~/.ssh
-  - ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ""
+  # Create gpg key
+  - gpg --batch --gen-key .travis-gpg.conf
   # Enter the maven project folder
   - cd cp
 
