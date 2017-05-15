@@ -1,6 +1,9 @@
 language: java
 
 before_install:
+  # Create gpg key
+  - gpg --batch --gen-key .travis-gpg.conf
+  # Enter the maven project folder
   - cd cp
 
 before_script:
