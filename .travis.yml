@@ -2,7 +2,8 @@ language: java
 
 before_install:
   # Create temporary keypair
-  - ssh-keygen -b 2048 -t rsa -f /.ssh/id_rsa -q -N ""
+  - mkdir -p ~/.ssh
+  - ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ""
   # Enter the maven project folder
   - cd cp
 
