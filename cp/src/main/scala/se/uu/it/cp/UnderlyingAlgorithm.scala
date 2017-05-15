@@ -7,8 +7,11 @@ package se.uu.it.cp
  *  @param properTrainingSet a training set that should be independent from the calibration set
  */
 abstract class UnderlyingAlgorithm[DataPoint <: Any](
-    properTrainingSet: Seq[DataPoint]) extends Serializable {
-  
+    val properTrainingSet: Seq[DataPoint]) extends Serializable {
+  /**
+   * A predictor that is trained using trainingProcedure when
+   * an UnderlyingAlgorithm is instantiated.
+   */
   val predictor = trainingProcedure(properTrainingSet)
   
   /**

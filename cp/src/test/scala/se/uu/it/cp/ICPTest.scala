@@ -46,8 +46,8 @@ class ICPTest extends FunSuite {
   BasicConfigurator.configure // configure log4j
 
   // Define 5NN underlying algorithm
-  class FiveNN(val properTrainingSet: Seq[DataPoint])
-      extends UnderlyingAlgorithm(properTrainingSet) {
+  class FiveNN(val training: Seq[DataPoint])
+      extends UnderlyingAlgorithm(training) {
     def makeDataPoint(features: Seq[Double], label: Double) = DataPoint(features, label)
     def getDataPointFeatures(dataPoint: DataPoint) = dataPoint.features
     def getDataPointLabel(dataPoint: DataPoint) = dataPoint.label
