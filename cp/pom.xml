@@ -8,6 +8,20 @@
 	<name>${project.artifactId}</name>
 	<url>https://github.com/mcapuccini/scala-cp</url>
 
+	<description>
+	Scala-CP is a Conformal Prediction (by Vovk et. al.) Scala implementation 
+	</description>
+
+	<developers>
+		<developer>
+			<name>Marco Capuccini</name>
+			<email>marco.capuccini@it.uu.se</email>
+			<url>http://www.example.com/jdoe</url>
+			<organization>pharmb.io</organization>
+			<organizationUrl>https://pharmb.io/</organizationUrl>
+		</developer>
+	</developers>
+
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
@@ -35,6 +49,12 @@
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
+
+	<scm>
+		<connection>scm:git:git://github.com/mcapuccini/scala-cp.git</connection>
+		<developerConnection>scm:git:git@github.com:mcapuccini/scala-cp.git</developerConnection>
+		<url>https://github.com/mcapuccini/scala-cp/tree/master</url>
+	</scm>
 
 	<dependencies>
 		<dependency>
@@ -102,6 +122,12 @@
 							</args>
 						</configuration>
 					</execution>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>doc-jar</goal>
+						</goals>
+					</execution>
 				</executions>
 			</plugin>
 			<plugin>
@@ -130,6 +156,33 @@
 							<goal>site</goal>
 						</goals>
 						<phase>site</phase>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
