@@ -12,7 +12,8 @@ import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
 
 // Define a MLlib SVM underlying algorithm
-class MLlibSVM(val properTrainingSet: RDD[LabeledPoint]) extends UnderlyingAlgorithm[LabeledPoint] {
+class MLlibSVM(val properTrainingSet: RDD[LabeledPoint])
+    extends UnderlyingAlgorithm[LabeledPoint] {
 
   // First describe how to access Spark's LabeledPoint structure 
   override def makeDataPoint(features: Seq[Double], label: Double) =
@@ -36,6 +37,7 @@ class MLlibSVM(val properTrainingSet: RDD[LabeledPoint]) extends UnderlyingAlgor
       svmModel.predict(lp.features)
     }
   }
+  
 }
 
 @RunWith(classOf[JUnitRunner])
@@ -71,6 +73,9 @@ class SparkTest extends FunSuite {
 
     // Error fraction should be at most significance 
     assert(errorFract <= significance)
+    
+    // Stop SparkContext
+    sc.stop
 
   }
 

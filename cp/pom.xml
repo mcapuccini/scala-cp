@@ -72,6 +72,12 @@
 			<version>2.1.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>de.bwaldvogel</groupId>
+			<artifactId>liblinear</artifactId>
+			<version>1.95</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
