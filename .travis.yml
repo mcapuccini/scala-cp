@@ -3,7 +3,7 @@ language: java
 before_install:
   # Create and send gpg key
   - gpg --batch --gen-key .travis-gpg.conf
-  - gpg --send-key $(gpg --list-keys | grep pub | grep -Eo "[A-F0-9]{16}")
+  - gpg --keyserver hkp://pool.sks-keyservers.net --send-key $(gpg --list-keys | grep pub | grep -Eo "[A-F0-9]{16}")
   # Enter the maven project folder
   - cd cp
 
