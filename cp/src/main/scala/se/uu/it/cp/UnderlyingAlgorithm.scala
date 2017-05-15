@@ -6,8 +6,8 @@ package se.uu.it.cp
  *  @constructor it trains a new underlying algorithm
  *  @param properTrainingSet a training set that should be independent from the calibration set
  */
-abstract class UnderlyingAlgorithm[DataPoint <: Any](
-    val properTrainingSet: Seq[DataPoint]) extends Serializable {
+abstract class UnderlyingAlgorithm[Data <: Any, DataPoint <: Any](
+    val properTrainingSet: Data) extends Serializable {
   /**
    * A predictor that is trained using trainingProcedure when
    * an UnderlyingAlgorithm is instantiated.
@@ -40,13 +40,13 @@ abstract class UnderlyingAlgorithm[DataPoint <: Any](
   def getDataPointLabel(dataPoint: DataPoint): Double
   
   /**
-   * Given a sequence of data points it returns a predictor as a lambda function
+   * Given a training set it returns a predictor as a lambda function
    * of type (DataPoint) => Double.
    *
    *  @param trainingSet training set used to train a predictor
    *  @return predictor as a lambda function of type (Seq[Double]) => Double
    */
-  protected def trainingProcedure(trainingSet: Seq[DataPoint]): (Seq[Double]) => Double 
+  protected def trainingProcedure(trainingSet: Data): (Seq[Double]) => Double 
   
   /**
    * Given an unseen sample it returns a nonconformity score.
