@@ -1,9 +1,13 @@
 language: java
 
 before_install:
-  # Create and send gpg key
-  - gpg --batch --gen-key .travis-gpg.conf
-  - gpg --send-key $(gpg --list-keys | grep pub | grep -Eo "[A-F0-9]{16}")
+  # Import decrypt and import gpg keys
+  - >
+    openssl aes-256-cbc
+    -K $encrypted_4ba34fa7ea95_key  -iv $encrypted_4ba34fa7ea95_iv
+    -in gpg-keys/secret.asc.enc -out gpg-keys/secret.asc -d
+  - gpg --import gpg-keys/public.asc
+  - gpg --import gpg-keys/secret.asc
   # Enter the maven project folder
   - cd cp
 
