@@ -27,7 +27,7 @@ Scala-CP can be used along with any Scala/Java machine learning library and algo
 ```
 
 ## Documentation
-The API documentation is available at: https://mcapuccini.github.io/scala-cp/scaladocs/. For some usage examples you refer to the unit test:
+The API documentation is available at: https://mcapuccini.github.io/scala-cp/scaladocs/. For some usage examples please refer to the unit test:
 
   - [Scala-CP with Spark MLlib](https://github.com/mcapuccini/scala-cp/blob/master/cp/src/test/scala/se/uu/it/cp/SparkTest.scala)
   - [Scala-CP with LIBLINEAR](https://github.com/mcapuccini/scala-cp/blob/master/cp/src/test/scala/se/uu/it/cp/LibLinTest.scala)
