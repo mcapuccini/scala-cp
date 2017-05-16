@@ -9,6 +9,8 @@ Scala-CP is a Scala implementation of the Conformal Prediction (CP) framework, i
 - [Documentation](#documentation)
   - [Scala-CP with Spark MLlib](https://github.com/mcapuccini/scala-cp/blob/master/cp/src/test/scala/se/uu/it/cp/SparkTest.scala)
   - [Scala-CP with LIBLINEAR](https://github.com/mcapuccini/scala-cp/blob/master/cp/src/test/scala/se/uu/it/cp/LibLinTest.scala)
+- [List of publications](#list-of-publications)
+- [Roadmap](#roadmap)
 
 ## Getting started
 Scala-CP can be used along with any Scala/Java machine learning library and algorithm. All you have to do is to add the Scala-CP dependency to your *pom.xml* file:
@@ -29,3 +31,16 @@ The API documentation is available at: https://mcapuccini.github.io/scala-cp/sca
 
   - [Scala-CP with Spark MLlib](https://github.com/mcapuccini/scala-cp/blob/master/cp/src/test/scala/se/uu/it/cp/SparkTest.scala)
   - [Scala-CP with LIBLINEAR](https://github.com/mcapuccini/scala-cp/blob/master/cp/src/test/scala/se/uu/it/cp/LibLinTest.scala)
+  
+## List of publications
+- [M. Capuccini, L. Carlsson, U. Norinder and O. Spjuth, "Conformal Prediction in Spark: Large-Scale Machine Learning with Confidence," 2015 IEEE/ACM 2nd International Symposium on Big Data Computing (BDC), Limassol, 2015, pp. 61-67.](http://ieeexplore.ieee.org/document/7406330/)
+
+## Roadmap
+
+### Inductive Conformal Prediction
+- [x] Classification 
+- [ ] Regression
+
+### Transductive Conformal Prediction
+- [ ] Classification 
+- [ ] Regression
