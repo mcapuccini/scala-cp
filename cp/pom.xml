@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>se.uu.it</groupId>
 	<artifactId>cp</artifactId>
-	<version>0.1.0</version>
+	<version>0.2.0-SNAPSHOT</version>
 	<name>${project.artifactId}</name>
 	<url>https://github.com/mcapuccini/scala-cp</url>
 
 	<description>
-	Scala-CP is a Conformal Prediction (by Vovk et. al.) Scala implementation 
+	Scala-CP is a Conformal Prediction (by Vovk et. al.) Scala implementation
 	</description>
 
 	<developers>
