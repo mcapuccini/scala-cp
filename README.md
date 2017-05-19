@@ -17,12 +17,13 @@ Scala-CP can be used along with any Scala/Java machine learning library and algo
 
 ```xml
 <dependencies>
-	...
-	<groupId>se.uu.it</groupId>
-		<artifactId>cp</artifactId>
-		<version>0.1.0</version>
-	</dependency>
-	...
+  ...
+  <dependency>
+    <groupId>se.uu.it</groupId>
+    <artifactId>cp</artifactId>
+    <version>0.1.0</version>
+  </dependency>
+  ...
 </dependencies>
 ```
 
