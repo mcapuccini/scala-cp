@@ -1,6 +1,7 @@
 # Scala-CP
 
 [![Build Status](https://travis-ci.org/mcapuccini/scala-cp.svg?branch=master)](https://travis-ci.org/mcapuccini/scala-cp)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/810ed0d38e6f47079eab3426f6bf6f95)](https://www.codacy.com/app/m-capuccini/scala-cp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mcapuccini/scala-cp&amp;utm_campaign=Badge_Grade)
 
 Scala-CP is a Scala implementation of the Conformal Prediction (CP) framework, introduced by Vovk *et. al.* in the book Algorithmic Learning in a Random World. When assigning confidence to machine learning models, CP is a nice alternative to cross-validation. Instead of predicting a value for a certain feature vector, a conformal predictor outputs a prediction set/region that contains the correct prediction with probability *1-𝜺*, where *𝜺* is a user-defined significance level. The choose of the significance level will of course influence the size of the prediction set/region. In alternative, using CP one can predict object-specific p-values for unseen examples.
 
