@@ -34,6 +34,10 @@ The API documentation is available at: https://mcapuccini.github.io/scala-cp/sca
   - [Scala-CP with Spark MLlib](https://github.com/mcapuccini/scala-cp/blob/master/cp/src/test/scala/se/uu/it/cp/SparkTest.scala)
   - [Scala-CP with LIBLINEAR](https://github.com/mcapuccini/scala-cp/blob/master/cp/src/test/scala/se/uu/it/cp/LibLinTest.scala)
   
+You can also refer to this Apache Zeppelin notbooks for more examples:
+
+  - [ZeppelinHub: Scala-CP with Spark MLlib](https://www.zeppelinhub.com/mcapuccini/instances/conformal-prediction/a6332d971f6340ad856d024d6a549b32)
+  
 ## List of publications
 - [M. Capuccini, L. Carlsson, U. Norinder and O. Spjuth, "Conformal Prediction in Spark: Large-Scale Machine Learning with Confidence," 2015 IEEE/ACM 2nd International Symposium on Big Data Computing (BDC), Limassol, 2015, pp. 61-67.](http://ieeexplore.ieee.org/document/7406330/)
 
