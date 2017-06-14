@@ -8,8 +8,10 @@ Scala-CP is a Scala implementation of the Conformal Prediction (CP) framework, i
 ## Table of Contents
 - [Getting started](#getting-started)
 - [Documentation](#documentation)
+- [Examples](#examples)
   - [Scala-CP with Spark MLlib](https://github.com/mcapuccini/scala-cp/blob/master/cp/src/test/scala/se/uu/it/cp/SparkTest.scala)
   - [Scala-CP with LIBLINEAR](https://github.com/mcapuccini/scala-cp/blob/master/cp/src/test/scala/se/uu/it/cp/LibLinTest.scala)
+  - [ZeppelinHub: Scala-CP with Spark MLlib](https://www.zeppelinhub.com/viewer/notebooks/bm90ZTovL21jYXB1Y2NpbmkvY29uZm9ybWFsLXByZWRpY3Rpb24vYTYzMzJkOTcxZjYzNDBhZDg1NmQwMjRkNmE1NDliMzIvbm90ZS5qc29u)
 - [List of publications](#list-of-publications)
 - [Roadmap](#roadmap)
 
@@ -29,7 +31,10 @@ Scala-CP can be used along with any Scala/Java machine learning library and algo
 ```
 
 ## Documentation
-The API documentation is available at: https://mcapuccini.github.io/scala-cp/scaladocs/. For some usage examples please refer to the unit tests:
+The API documentation is available at: https://mcapuccini.github.io/scala-cp/scaladocs/. 
+
+## Examples
+For some usage examples please refer to the unit tests:
 
   - [Scala-CP with Spark MLlib](https://github.com/mcapuccini/scala-cp/blob/master/cp/src/test/scala/se/uu/it/cp/SparkTest.scala)
   - [Scala-CP with LIBLINEAR](https://github.com/mcapuccini/scala-cp/blob/master/cp/src/test/scala/se/uu/it/cp/LibLinTest.scala)
