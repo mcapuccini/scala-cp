@@ -12,7 +12,6 @@ Scala-CP is a Scala implementation of the Conformal Prediction (CP) framework, i
   - [Scala-CP with Spark MLlib](https://github.com/mcapuccini/scala-cp/blob/master/cp/src/test/scala/se/uu/it/cp/SparkTest.scala)
   - [Scala-CP with LIBLINEAR](https://github.com/mcapuccini/scala-cp/blob/master/cp/src/test/scala/se/uu/it/cp/LibLinTest.scala)
   - [ZeppelinHub: Scala-CP with Spark MLlib](https://www.zeppelinhub.com/viewer/notebooks/bm90ZTovL21hcmNvY2FwL3plcHBlbGluLWNwLzUyNjVlOGQyYjkxOTRmNGU4MWM4OGJjMzQyMDMzZDk5L25vdGUuanNvbg)
-  - [ZeppelinHub: LIBLINEAR CPs in parallel with Spark](https://www.zeppelinhub.com/viewer/notebooks/bm90ZTovL21hcmNvY2FwL3plcHBlbGluLWNwLzg0YmQ5OTM2ZjFjMjQ4MzM4ZTZhM2E4ODk1NWNhMGNhL25vdGUuanNvbg)
 - [List of publications](#list-of-publications)
 - [Roadmap](#roadmap)
 
@@ -43,7 +42,6 @@ For some usage examples please refer to the unit tests:
 You can also refer to this Apache Zeppelin notebooks for more examples:
 
   - [ZeppelinHub: Scala-CP with Spark MLlib](https://www.zeppelinhub.com/viewer/notebooks/bm90ZTovL21hcmNvY2FwL3plcHBlbGluLWNwLzUyNjVlOGQyYjkxOTRmNGU4MWM4OGJjMzQyMDMzZDk5L25vdGUuanNvbg)
-  - [ZeppelinHub: LIBLINEAR CPs in parallel with Spark](https://www.zeppelinhub.com/viewer/notebooks/bm90ZTovL21hcmNvY2FwL3plcHBlbGluLWNwLzg0YmQ5OTM2ZjFjMjQ4MzM4ZTZhM2E4ODk1NWNhMGNhL25vdGUuanNvbg)
   
 ## List of publications
 - [M. Capuccini, L. Carlsson, U. Norinder and O. Spjuth, "Conformal Prediction in Spark: Large-Scale Machine Learning with Confidence," 2015 IEEE/ACM 2nd International Symposium on Big Data Computing (BDC), Limassol, 2015, pp. 61-67.](http://ieeexplore.ieee.org/document/7406330/)
