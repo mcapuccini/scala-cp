@@ -45,6 +45,7 @@ You can also refer to this Apache Zeppelin notebooks for more examples:
   
 ## List of publications
 - [M. Capuccini, L. Carlsson, U. Norinder and O. Spjuth, "Conformal Prediction in Spark: Large-Scale Machine Learning with Confidence," 2015 IEEE/ACM 2nd International Symposium on Big Data Computing (BDC), Limassol, 2015, pp. 61-67.](http://ieeexplore.ieee.org/document/7406330/)
+- [Ahmed, L., Georgiev, V., Capuccini, M., Toor, S., Schaal, W., Laure, E., & Spjuth, O. (2018). Efficient iterative virtual screening with Apache Spark and conformal prediction. Journal of cheminformatics, 10(1), 1-8.](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-018-0265-z)
 
 ## Roadmap
 
